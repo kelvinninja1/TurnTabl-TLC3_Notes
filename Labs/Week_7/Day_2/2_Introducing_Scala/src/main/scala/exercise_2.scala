@@ -1,6 +1,4 @@
 object exercise_2 {
-  import java.time.LocalDate
-  import java.time.format.DateTimeFormatter
   import java.text.SimpleDateFormat
 
   def main(args: Array[String]): Unit = {
@@ -10,14 +8,20 @@ object exercise_2 {
 
     val inputFormat = new SimpleDateFormat("dd/MM/yy")
     val outputFormat = new SimpleDateFormat("MMMMM yyyy")
-    var dateElements = dateString.split("/")
-//    println(dateElements(0))
-    dateString split("/") foreach(println)
+    val dateElements = dateString.split("/")
+//    dateString split "/" foreach println  // Wanted to see the element 1 by 1
+    val dayNo = dateElements(0)
 
-    var dayNo = dateElements(0)
+    val formattedDate = outputFormat.format(inputFormat.parse(dateString))
+
+    println(niceDay(dayNo) + " " + formattedDate)
+  }
+
+
+  def niceDay (dayNo: String): String = {
     var day: String = ""
 
-    (dayNo.toInt % 10) match {
+    dayNo.toInt % 10 match {
       case 1 =>
         day = s"${dayNo}st"
       case 2 =>
@@ -27,10 +31,6 @@ object exercise_2 {
       case _ =>
         day = s"${dayNo}th"
     }
-
-    val formattedDate = outputFormat.format(inputFormat.parse(dateString))
-
-    println(day + " " + formattedDate)
+    s"$day"
   }
 }
-

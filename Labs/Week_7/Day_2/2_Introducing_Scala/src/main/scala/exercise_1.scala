@@ -4,7 +4,7 @@ object exercise_1 {
   }
 
   def cel (c: Double)  {
-    var f = (c * 9 / 5 ) + 32
+    val f = (c * 9 / 5 ) + 32
     println("The fahrenheit is: " + f)
   }
 }
